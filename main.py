@@ -4,22 +4,24 @@ import asyncio
 import os
 import json
 
+import os
+from dotenv import load_dotenv
 
-config_list = (
+load_dotenv()  # Load environment variables from .env file
+
+config_list = [
     {
-        'model': 'gpt-4',  # or 'gpt-3.5-turbo' 
-        'api_key': os.getenv("OPENAI_API_KEY")  
-    })
+        'model': 'gpt-4',
+        'api_key': os.getenv('OPENAI_API_KEY')
+    }
+]
 
-
-
-llm_config = (
-        {
-         "model": "bartowski/Llama-3.2-3B-Instruct-GGUF",
-            "base_url": "http://localhost:1234/v1",
-            "api_key": "lm-studio",
-        }
-)
+llm_config = {
+    "config_list": config_list,
+    "temperature": 0.2,
+    "request_timeout": 600,
+    "seed": 42
+}
 
 MAZE = [
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
